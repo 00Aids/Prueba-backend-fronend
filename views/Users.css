@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.add{
+    margin-top: 100px;
+    margin-left: 650px;
+    background-color: rgb(29, 236, 29);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 16;
+    border: 2px solid black;
+    font-weight: bold;
+}
+
+.Users{
+    margin-top: 20px;
+    margin-left: 650px;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+th{
+    border: 1px solid black;
+    padding: 10px;
+}
+
+td{
+    border: 1px solid black;
+    padding: 5px;
+}
+
+button{
+    cursor: pointer;
+}
+
+.edit{
+    border: 1px solid black;
+    background-color: rgb(65, 226, 247);
+    font-weight: bold;
+}
+
+.delete{
+    border: 1px solid black;
+    background-color: rgb(243, 30, 30);
+    font-weight: bold;
+}
+
+.add:hover{
+    transform: scale(1.1);
+}
+
+.edit:hover{
+    transform: scale(1.1);
+}
+
+.delete:hover{
+    transform: scale(1.1);
+}
