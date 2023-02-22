@@ -49,7 +49,21 @@ export const GetUsers = () => {
     td5.appendChild(button2)
     const td6 = document.createElement ('td')
     td6.appendChild(button3)
+
+    const query = async()=>{
+
+        const Users = await fetch(`/Get/Usuarios`,{
+            method: 'get',
+            headers:{
+                "Content-type":"application/json"
+            }
+        });
+        return  
+    }
     
+    const data = query()
+    const Users = data
+
     const tr = document.createElement ('tr')
     tr.appendChild(td)
     tr.appendChild(td2)
