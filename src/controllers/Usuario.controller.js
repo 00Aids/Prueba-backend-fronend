@@ -1,18 +1,15 @@
 import Usuario from "../model/Usuario.model.js";
 
+const User = new Usuario()
+
 class UsuarioController{
-    static CreateUsuario = async(req,res) => {
-        try{
-            const dataUser= new User(req.body);
-            const res = await dataUser.create()
-            if(res.affectedRows>0){
-            return response.status(202).json({'message': 'se guardo correctamente'})
-            }
-        }catch(error){
-            return {
-                "status":404,
-                "message":error.message
-            }
+
+    static CreateUsuario = async (req, res)=>{
+        try {
+            const result = await User.CreateUsuario(req, res)
+            res.send("success full")
+        } catch (error) {
+            res.send(error.message)
         }
     }
 
@@ -48,7 +45,7 @@ class UsuarioController{
 
     static Update = async(req, res) => {
         try{
-            const respuesta = await Usuario.GetUsuarios(req.body, req.params.id )
+            const respuesta = await Usuario.UpdateUsuario(req.body)
             if (respuesta.length <= 0) res.status(404).json({
                 message: 'Usuario not found'
             })

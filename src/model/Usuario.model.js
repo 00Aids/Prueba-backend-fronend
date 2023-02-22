@@ -3,8 +3,7 @@ import { pool } from "../../db/db.js"
 export class Usuario {
     CreateUsuario = async (req, res)=>{
         const {Nombre, Email, Edad} = req.body
-        console.log(fechaInicio, fechaFinalisacion)
-        const [rows] = await pool.query('INSERT INTO Usuario (Nombre, Email, Edad}) VALUES (?, ?, ?)', [Nombre, Email, Edad])
+        const [rows] = await pool.query('INSERT INTO Usuario (Nombre, Email, Edad) VALUES (?, ?, ?)', [Nombre, Email, Edad])
         return rows[0]
     }
 
@@ -18,10 +17,9 @@ export class Usuario {
         return (rows)
     }
 
-    static UpdateUsuario = async (id) => {
-        const {id} = req.params
-        const {Nombre, Email, Edad} = req.body
-        const [result] = await pool.query('UPDATE Usuario SET name = IFNULL(?, name), salary = IFNULL(?, salary) WHERE id = (?)', [Nombre, Email, Edad, id])
+    static UpdateUsuario = async (variable) => {
+        const { Nombre, Email, Edad, id} = variable
+        const [result] = await pool.query('UPDATE Usuario SET Nombre = IFNULL(?, Nombre), Email = IFNULL(?, Email), Edad = IFNULL(?, Edad) WHERE id = (?)', [ Nombre, Email, Edad,id])
         const [rows] = await pool.query('SELECT * FROM Usuario WHERE id = (?)', [id])
         return rows[0]
     }
