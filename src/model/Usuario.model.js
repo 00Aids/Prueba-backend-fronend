@@ -8,26 +8,26 @@ export class Usuario {
         return rows[0]
     }
 
-    GetUsuarios = async (req, res) => {
+    static GetUsuarios = async () => {
         const [rows] = await pool.query('SELECT * FROM Usuario')
         return ({rows})
     }
 
-    GetUsuario = async (req, res) => {
-        const [rows] = await pool.query('SELECT * FROM Usuario WHERE id = ?', [req.params.id])
+    static GetUsuario = async (id) => {
+        const [rows] = await pool.query('SELECT * FROM Usuario WHERE id = (?)', [id])
         return (rows)
     }
 
-    UpdateUsuario = async (req, res) => {
+    static UpdateUsuario = async (id) => {
         const {id} = req.params
         const {Nombre, Email, Edad} = req.body
-        const [result] = await pool.query('UPDATE Usuario SET name = IFNULL(?, name), salary = IFNULL(?, salary) WHERE id = ?', [Nombre, Email, Edad, id])
-        const [rows] = await pool.query('SELECT * FROM Usuario WHERE id = ?', [id])
+        const [result] = await pool.query('UPDATE Usuario SET name = IFNULL(?, name), salary = IFNULL(?, salary) WHERE id = (?)', [Nombre, Email, Edad, id])
+        const [rows] = await pool.query('SELECT * FROM Usuario WHERE id = (?)', [id])
         return rows[0]
     }
 
-    DeleteUsuario = async (req, res) => {
-        const [result] = await pool.query('DELETE FROM Usuario WHERE id = ?', [req.params.id])
+    static DeleteUsuario = async (id) => {
+        const [result] = await pool.query('DELETE FROM Usuario WHERE id = (?)', [id])
         return result
     }
 }
